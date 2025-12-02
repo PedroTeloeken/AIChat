@@ -29,7 +29,7 @@ struct AppViewBuilder<TabbarView: View, OnboardingView: View>: View {
 
 private struct PreviewView: View {
     
-    @State private var showTabBar: Bool = false
+    @AppStorage("showTabbarView") var showTabBar: Bool = false
     
     @State private var showOnboardingView: Bool = false
     
