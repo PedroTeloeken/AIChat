@@ -10,7 +10,17 @@ import SwiftUI
 struct WelcomeView: View {
     var body: some View {
         NavigationStack {
-            Text("Welcome to the Chat App!")
+            VStack {
+                Text("Welcome!")
+                    .frame(maxHeight: .infinity)
+                
+                NavigationLink {
+                    OnboardingCompletedView()
+                } label: {
+                    Text("Get started")
+                        .callToActionButton()
+                }
+            }.padding(16)
         }
     }
 }
