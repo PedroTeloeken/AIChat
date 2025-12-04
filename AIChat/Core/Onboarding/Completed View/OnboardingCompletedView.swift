@@ -34,6 +34,7 @@ struct OnboardingCompletedView: View {
             }
         )
         .padding(24)
+        .toolbar(.hidden, for: .navigationBar)
     }
     
     private var ctaButton: some View {
