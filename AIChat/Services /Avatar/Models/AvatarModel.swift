@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AvatarModel {
+struct AvatarModel: Hashable {
     
     let avatarId: String
     let name: String?
@@ -42,7 +42,7 @@ struct AvatarModel {
         AvatarDescriptionBuilder(avatar: self).characterDescription
     }
     
-    static var mock: AvatarModel  {
+    static var mock: AvatarModel {
         mocks[0]
     }
     
