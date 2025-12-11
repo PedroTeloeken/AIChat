@@ -54,7 +54,6 @@ struct CarouselView<Content: View, T: Hashable>: View {
             }
             .animation(.linear, value: selection)
         }
-        .padding(.horizontal)
     }
     
     private func updateSelectionIfNeeded() {
