@@ -42,7 +42,7 @@ struct CustomListCellView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding(12)
-        .padding(.vertical , 4)
+        .padding(.vertical, 4)
         .background(Color(uiColor: .systemBackground))
     }
 }

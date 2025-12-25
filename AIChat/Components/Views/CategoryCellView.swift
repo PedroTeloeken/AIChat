@@ -46,5 +46,4 @@ struct CategoryCellView: View {
             .frame(maxWidth: 400)
     }
     
-    
 }

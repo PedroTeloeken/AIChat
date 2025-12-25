@@ -61,7 +61,7 @@ struct OnboardingCompletedView: View {
             try await Task.sleep(for: .seconds(3))
             isCompletingProfileSetup = false
 
-            //try await saveUserProfile(color: selectedColor)
+            ///try await saveUserProfile(color: selectedColor)
             root.updateViewState(showTabBarView: true)
         }
         
