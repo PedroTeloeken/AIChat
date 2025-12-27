@@ -28,7 +28,7 @@ struct ChatsView: View {
                         }
                     )
                     .anyButton(option: .highlight) {
-                        <#code#>
+                        
                     }
                     .removeListRowFormatting()
                 }
