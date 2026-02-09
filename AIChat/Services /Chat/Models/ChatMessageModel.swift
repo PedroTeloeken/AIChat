@@ -45,7 +45,7 @@ struct ChatMessageModel: Identifiable {
             ChatMessageModel(
                 id: UUID().uuidString,
                 chatId: "chat_1",
-                authorId: "user_1",
+                authorId: "user_001",
                 content: "Hey! How are you?",
                 seenById: ["user_2", "user_3"],
                 dateCreated: Date().addingTimeInterval(minutes: 10)
@@ -61,7 +61,7 @@ struct ChatMessageModel: Identifiable {
             ChatMessageModel(
                 id: UUID().uuidString,
                 chatId: "chat_1",
-                authorId: "user_1",
+                authorId: "user_001",
                 content: "Doing great, thanks 😄",
                 seenById: ["user_2"],
                 dateCreated: Date().addingTimeInterval(minutes: 5)
