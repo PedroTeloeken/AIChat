@@ -16,17 +16,18 @@ struct ChatView: View {
     
     @State private var scrollPosition: String?
     
-    //@State private var showAlert: Bool = false
     @State private var showAlert: AnyAppAlert?
     @State private var showChatSettings: AnyAppAlert?
-
-
+    
+    @State private var showProfileModel: Bool = false
+    
     var body: some View {
-        VStack(spacing: 0) {
-            scrollViewSection
-            
-            textFieldSection
+        ZStack {
+            VStack(spacing: 0) {
+                scrollViewSection
                 
+                textFieldSection
+            }
         }
         .navigationTitle(avatar?.name ?? "Chat")
         .toolbarTitleDisplayMode(.inline)
@@ -41,6 +42,11 @@ struct ChatView: View {
         }
         .showCustomAlert(type: .confirmationDialog, alert: $showChatSettings)
         .showCustomAlert(alert: $showAlert)
+        .showModel(showModel: $showProfileModel) {
+            if let avatar {
+                profileModel(avatar: avatar)
+            }
+        }
     }
     
     private var scrollViewSection: some View {
@@ -50,8 +56,10 @@ struct ChatView: View {
                     ChatBubbleViewBuilder(
                         message: message,
                         isCurrentUser: message.authorId == currentUser?.userId,
-                        imageName: message.authorId == currentUser?.userId ? nil : avatar?.profileImageName
+                        imageName: message.authorId == currentUser?.userId ? nil : avatar?.profileImageName,
+                        onImagePressed: onAvatarImagePressed
                     )
+                    .id(message.id)
                 }
             }
             .frame(maxWidth: .infinity)
@@ -91,6 +99,20 @@ struct ChatView: View {
             .padding(.horizontal, 12)
             .padding(.vertical, 6)
             .background(Color(uiColor: .secondarySystemBackground))
+    }
+    
+    private func profileModel(avatar: AvatarModel) -> some View {
+        ProfileModelView(
+            imageName: avatar.profileImageName,
+            title: avatar.name,
+            subtitle: avatar.characterOption?.rawValue.capitalized,
+            headline: avatar.characterDescription,
+            onXMarkPressed: {
+                showProfileModel = false
+            }
+        )
+        .padding(40)
+        .transition(.slide)
     }
     
     private func onSendMessagePressed() {
@@ -135,6 +157,10 @@ struct ChatView: View {
                 )
             }
         )
+    }
+    
+    private func onAvatarImagePressed() {
+        showProfileModel = true
     }
     
 }

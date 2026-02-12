@@ -49,5 +49,14 @@ extension View {
                 ], startPoint: .top, endPoint: .center)
             )
     }
-    
+        
+    @ViewBuilder
+    func ifSatisfiedCondition(_ condition: Bool, transform: (Self) -> some View) -> some View {
+        if condition {
+            transform(self)
+        } else {
+            self
+        }
+    }
+        
 }
